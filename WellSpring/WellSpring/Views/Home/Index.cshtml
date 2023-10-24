@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
+@inject UserManager<IdentityUser> userManager
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>WellSpring Tech Academy</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body.background-image {
+            background-color: #f5f5f5; /* Light Ash background color */
+        }
+    </style>
+</head>
+<body class="background-image">
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-5 py-5">
+            <div class="col-12 col-lg-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3">
+                    WellSpring Tech Academy
+                </h1>
+                <p class="lead">
+                    Whether you're a beginner eager to embark on your coding journey or a seasoned developer looking to expand your skills, our academy offers an array of courses tailored to your needs.
+                </p>
+                @if (signInManager.IsSignedIn(User))
+                {
+                    <a class="btn btn-outline-dark me-3" asp-area="" asp-controller="Home" asp-action="Index">Explore Our Courses</a>
+                }
+                else
+                {
+                    <a class="btn btn-outline-dark me-3" asp-area="" asp-controller="Auth" asp-action="Register">Join the Adventure</a>
+                }
+            </div>
+
+            <div class="col-lg-6">
+                <img src="https://images.pexels.com/photos/955402/pexels-photo-955402.jpeg?auto=compress&cs=tinysrgb&w=600"
+                     alt="WellSpring - Your Tech Universe"
+                     class="d-block mx-lg-auto img-fluid"
+                     style="max-width: 400px; max-height: 300px;" />
+            </div>
+            <div>
+                <a href="https://www.facebook.com/profile.php?id=61552542579975" class="btn btn-bluish-green me-2"><i class="bi bi-facebook"></i> Facebook</a>
+                <a href="mailto:wellspringtechacademy@gmail.com" class="btn btn-bluish-green me-2"><i class="bi bi-envelope"></i> Email</a>
+                <a href="tel:+2347064534095" class="btn btn-bluish-green"><i class="bi bi-telephone"></i> Phone</a>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
